@@ -1,8 +1,11 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Carro {
     private String placa;
     private LocalDateTime horarioEntrada;
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
 
     public Carro(String placa) {
         this.placa = placa;
@@ -19,9 +22,10 @@ public class Carro {
 
     @Override
     public String toString() {
+        String horario = horarioEntrada.format(formatter);
         return "Carro{" +
                 "placa='" + placa + '\'' +
-                ", horarioEntrada=" + horarioEntrada +
+                ", horarioEntrada=" + horario +
                 '}';
     }
 }

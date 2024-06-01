@@ -1,20 +1,26 @@
 public class Main {
     public static void main(String[] args) {
-        Pilha estacionamento = new Pilha(5);
+        Pilha estacionamento = new Pilha(3);
 
-        estacionamento.push(new Carro("AAA-1234"));
-        estacionamento.push(new Carro("BBB-5678"));
-        estacionamento.push(new Carro("CCC-9101"));
+        // Entrada de carros
+        estacionamento.push(new Carro("ABC-0123"));
+        estacionamento.push(new Carro("DEF-4567"));
+        estacionamento.push(new Carro("GHI-8910"));
+        estacionamento.push(new Carro("JKL-1648")); 
+        //Estacionamento cheio não suporta mais a entrada de carros
 
-        estacionamento.consulta("BBB-5678");
+        // Relatório de carros
+        estacionamento.relatorioCarro();
 
-        estacionamento.relatorioOcupacao();
+        // Saída de carros
+        estacionamento.sair("DEF-4567");
 
-        estacionamento.sair("BBB-5678");
-        estacionamento.consulta("BBB-5678");
+        // Relatório de carros depois da saída de um carro
+        estacionamento.relatorioCarro();
 
-        estacionamento.relatorioOcupacao();
+        // Consulta de carro
+        estacionamento.consulta("ABC-0123");
 
-        System.out.println("Total de manobras realizadas: " + estacionamento.getTotalManobras());
+        System.out.println("\nNúmero de manobras realizadas por cada carro ao sair: " + estacionamento.getManobras());
     }
 }

@@ -1,18 +1,20 @@
 import java.time.LocalDateTime;
 import java.util.Stack;
+import java.time.format.DateTimeFormatter;
 import java.time.Duration;
 
 public class Pilha {
     private No topo;
     private int capacidade;
     private int totalManobras;
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public Pilha(int capacidade) {
         this.capacidade = capacidade;
         this.totalManobras = 0;
     }
 
-    public int getTotalManobras() {
+    public int getManobras() {
         return totalManobras;
     }
 
@@ -32,7 +34,7 @@ public class Pilha {
 
     public void push(Carro carro) {
         if (estaCheia()) {
-            System.out.println("Estacionamento cheio.");
+            System.out.println("Estacionamento está cheio.");
             return;
         }
         No novo = new No(carro);
@@ -40,7 +42,7 @@ public class Pilha {
             novo.setProximo(topo);
         }
         topo = novo;
-        System.out.println("Carro " + carro.getPlac() + " entrou às " + carro.getHorarioEnt());
+        System.out.println("Carro de placa: " + carro.getPlac() + ", entrou no horário das: " + carro.getHorarioEnt().format(formatter));
     }
 
     public Carro pop() {
@@ -89,12 +91,11 @@ public class Pilha {
             Carro carro = pop();
             LocalDateTime horarioSaida = LocalDateTime.now();
             Duration permanencia = Duration.between(carro.getHorarioEnt(), horarioSaida);
-            System.out.println("Carro " + placa + " saiu às " + horarioSaida + ". Tempo de permanência: " + permanencia.toMinutes() + " minutos. Manobras: " + manobras + ".");
+            System.out.println("\nCarro de placa: " + placa + ", saiu no horário das: " + horarioSaida.format(formatter) + ". \nTempo total de permanência: " + permanencia.toMinutes() + " min.\nManobras realizadas: " + manobras + ".");
             totalManobras += manobras;
         } else {
             System.out.println("Carro não encontrado.");
         }
-
         while (!tempStack.isEmpty()) {
             push(tempStack.pop().getInfo());
         }
@@ -105,7 +106,7 @@ public class Pilha {
         No aux = topo;
         while (aux != null) {
             if (aux.getInfo().getPlac().equals(placa)) {
-                System.out.println("Carro " + placa + " está na posição " + posicao + " da pilha. Entrou às " + aux.getInfo().getHorarioEnt() + ".");
+                System.out.println("\nCarro de placa: " + placa + " está na posição " + posicao + " da pilha. Horário de entrada: " + aux.getInfo().getHorarioEnt().format(formatter) + ".");
                 return;
             }
             aux = aux.getProximo();
@@ -114,15 +115,15 @@ public class Pilha {
         System.out.println("Carro não encontrado.");
     }
 
-    public void relatorioOcupacao() {
-        System.out.println("Relatório de Ocupação Atual do Estacionamento:");
+    public void relatorioCarro() {
+        System.out.println("\nRelatório sobre a ocupação atual: ");
         if (estaVazia()) {
-            System.out.println("Estacionamento vazio.");
+            System.out.println("Estacionamento está vazio.");
         } else {
             No aux = topo;
             int posicao = 1;
             while (aux != null) {
-                System.out.println("Posição " + posicao + ": " + aux.getInfo().getPlac() + " entrou às " + aux.getInfo().getHorarioEnt());
+                System.out.println("Posição " + posicao + ": " + aux.getInfo().getPlac() + ", horário de entrada: " + aux.getInfo().getHorarioEnt().format(formatter));
                 aux = aux.getProximo();
                 posicao++;
             }
