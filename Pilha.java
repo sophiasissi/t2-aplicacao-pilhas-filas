@@ -15,7 +15,7 @@ public class Pilha {
     public int getTotalManobras() {
         return totalManobras;
     }
-    
+
     public boolean estaVazia() {
         return topo == null;
     }
@@ -40,7 +40,7 @@ public class Pilha {
             novo.setProximo(topo);
         }
         topo = novo;
-        System.out.println("Carro " + carro.getPlaca() + " entrou às " + carro.getHorarioEntrada());
+        System.out.println("Carro " + carro.getPlac() + " entrou às " + carro.getHorarioEnt());
     }
 
     public Carro pop() {
@@ -79,16 +79,16 @@ public class Pilha {
         Stack<No> tempStack = new Stack<>();
         int manobras = 0;
 
-        while (!estaVazia() && !peek().getPlaca().equals(placa)) {
+        while (!estaVazia() && !peek().getPlac().equals(placa)) {
             tempStack.push(topo);
             pop();
             manobras++;
         }
 
-        if (!estaVazia() && peek().getPlaca().equals(placa)) {
+        if (!estaVazia() && peek().getPlac().equals(placa)) {
             Carro carro = pop();
             LocalDateTime horarioSaida = LocalDateTime.now();
-            Duration permanencia = Duration.between(carro.getHorarioEntrada(), horarioSaida);
+            Duration permanencia = Duration.between(carro.getHorarioEnt(), horarioSaida);
             System.out.println("Carro " + placa + " saiu às " + horarioSaida + ". Tempo de permanência: " + permanencia.toMinutes() + " minutos. Manobras: " + manobras + ".");
             totalManobras += manobras;
         } else {
@@ -104,8 +104,8 @@ public class Pilha {
         int posicao = 1;
         No aux = topo;
         while (aux != null) {
-            if (aux.getInfo().getPlaca().equals(placa)) {
-                System.out.println("Carro " + placa + " está na posição " + posicao + " da pilha. Entrou às " + aux.getInfo().getHorarioEntrada() + ".");
+            if (aux.getInfo().getPlac().equals(placa)) {
+                System.out.println("Carro " + placa + " está na posição " + posicao + " da pilha. Entrou às " + aux.getInfo().getHorarioEnt() + ".");
                 return;
             }
             aux = aux.getProximo();
@@ -122,7 +122,7 @@ public class Pilha {
             No aux = topo;
             int posicao = 1;
             while (aux != null) {
-                System.out.println("Posição " + posicao + ": " + aux.getInfo().getPlaca() + " entrou às " + aux.getInfo().getHorarioEntrada());
+                System.out.println("Posição " + posicao + ": " + aux.getInfo().getPlac() + " entrou às " + aux.getInfo().getHorarioEnt());
                 aux = aux.getProximo();
                 posicao++;
             }
