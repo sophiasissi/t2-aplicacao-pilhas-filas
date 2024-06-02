@@ -21,6 +21,6 @@ public class Main {
         // Consulta de carro
         estacionamento.consulta("ABC-0123");
 
-        System.out.println("\nNúmero de manobras realizadas por cada carro ao sair: " + estacionamento.getManobras());
+        System.out.println("\nNúmero de manobras realizadas: " + estacionamento.getManobras());
     }
 }
