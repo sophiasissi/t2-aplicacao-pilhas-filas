@@ -1,5 +1,5 @@
 # Trabalho 2 de Algoritmos, Estrutura de Dados e Programação
-Aplicação de pilhas e filas. 
+## Aplicação de pilhas e filas. 
 
 **Exercício 1) Estacionamento com Entrada Única (Simulação com Pilha)**
 
@@ -25,5 +25,6 @@ Você foi contratado para desenvolver um sistema de gerenciamento de um estacion
 **Objetivo:**
 Desenvolver um programa que implemente essa lógica utilizando uma estrutura de dados de pilha. O programa deve ser capaz de simular a entrada e saída de carros, bem como fornecer relatórios sobre a ocupação atual do estacionamento e o número de manobras realizadas para cada carro ao sair.
 
-Nome: Sophia Sissi Curcio Guedes
-RA: 23.01044-4
+**Nome: Sophia Sissi Curcio Guedes**
+
+**RA: 23.01044-4**
